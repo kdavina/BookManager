@@ -44,10 +44,10 @@ public class BookController {
 		return bookService.findBooksByName(name);
 	}
 
-	@PostMapping()
-	public void addBooks(@RequestBody List<Book> books){
-		bookService.addBooks(books);
-	}
+//	@PostMapping()
+//	public void addBooks(@RequestBody List<Book> books){
+//		bookService.addBooks(books);
+//	}
 
 	//overloading the method depending on whether one or multiple books are passed- would it make more sense syntatically to have addBook instead?
 	@PostMapping()
