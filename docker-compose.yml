@@ -1,0 +1,16 @@
+# taken from Amigoscode Spring Boot + MongoDB tutorial: https://www.youtube.com/watch?v=ssj0CGxv60k&list=PLwvrYc43l1Mz_c-vV1yVyvFNFZPAleSNE&index=15
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:5.0.3
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - data:/data
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=rootuser
+      - MONGO_INITDB_ROOT_PASSWORD=rootpass
+
+volumes:
+  data: {}
