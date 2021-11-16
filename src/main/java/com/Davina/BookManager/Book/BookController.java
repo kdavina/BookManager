@@ -49,7 +49,7 @@ public class BookController {
 //		bookService.addBooks(books);
 //	}
 
-	//overloading the method depending on whether one or multiple books are passed- would it make more sense syntatically to have addBook instead?
+	//overloading the method depending on whether one or multiple books are passed did not work- will need to investigate how to add multiple books
 	@PostMapping()
 	public void addBook(@RequestBody Book book){
 		bookService.addBook(book);
