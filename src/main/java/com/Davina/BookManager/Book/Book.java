@@ -1,18 +1,23 @@
 package com.Davina.BookManager.Book;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import com.sun.istack.internal.NotNull;
 
 @Document
 public class Book {
 
-	@Id
-	private String id;
-
+	@NotNull
 	private long isbn;
+
+	@NotNull
 	private String name;
+
 	private String genre;
+
+	@NotNull
 	private String authorFirstName;
+
+	@NotNull
 	private String authorLastName;
 
 	public Book(String name, String authorFirstName, String authorLastName){
