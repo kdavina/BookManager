@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,5 +41,17 @@ public class BookController {
 	public List<Book> getBooksByName(@PathVariable("name") String name){
 		return bookService.findBooksByName(name);
 	}
+
+	@PostMapping()
+	public void addBooks(@RequestBody List<Book> books){
+		bookService.addBooks(books);
+	}
+
+	//overloading the method depending on whether one or multiple books are passed- would it make more sense syntatically to have addBook instead?
+	@PostMapping()
+	public void addBook(@RequestBody Book book){
+		bookService.addBook(book);
+	}
+
 
 }
