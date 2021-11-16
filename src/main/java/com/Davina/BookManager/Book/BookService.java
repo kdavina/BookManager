@@ -1,14 +1,29 @@
 package com.Davina.BookManager.Book;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BookService {
 
-	public List<Book> getBooks(){
-		return Arrays.asList(new Book("Penguins can fly", "Robert", "Wilde"),
-				new Book("Pigs are quite dashing", "Steve", "Funkerfield"));
+	private final BookRepository bookRepository;
+
+	@Autowired
+	BookService(BookRepository bookRepository){
+		this.bookRepository = bookRepository;
+	}
+
+	public List<Book> findAllBooks() {
+		return bookRepository.findAll();
+	}
+
+	public Optional<Book> findBookById(String id) {
+		return bookRepository.findById(id);
+	}
+
+	public List<Book> findBooksByName(String name) {
+		return bookRepository.findAllByName(name);
 	}
 }
