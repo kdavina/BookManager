@@ -20,16 +20,23 @@ public class Book {
 	@NotNull
 	private String authorLastName;
 
-	public Book(String name, String authorFirstName, String authorLastName){
+	// empty constructor for deserialization: https://stackoverflow.com/questions/65291296/why-spring-boot-can-deserialize-class-without-default-constructor
+	public Book(){}
+
+	public Book(long isbn, String name, String authorFirstName, String authorLastName){
+		this.isbn = isbn;
 		this.name = name;
 		this.authorFirstName = authorFirstName;
 		this.authorLastName = authorLastName;
 	}
 
-	public Book(String name, String authorFirstName, String authorLastName, String genre){
-		this(name, authorFirstName, authorLastName);
+
+	public Book(long isbn, String name, String authorFirstName, String authorLastName, String genre){
+		this(isbn, name, authorFirstName, authorLastName);
 		this.genre = genre;
 	}
+
+	// stretch goal: use lombok to reduce the following section
 
 	public long getIsbn() {
 		return isbn;
