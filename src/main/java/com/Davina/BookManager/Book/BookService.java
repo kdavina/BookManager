@@ -34,4 +34,16 @@ public class BookService {
 	public void addBook(Book book){
 		bookRepository.save(book);
 	}
+
+	public void updateBook(Book book) {
+		bookRepository.save(book);
+	}
+
+	public void deleteBook(String id) {
+		bookRepository.deleteById(id);
+	}
+
+	public void deleteAllBooks() {
+		bookRepository.deleteAll();
+	}
 }
