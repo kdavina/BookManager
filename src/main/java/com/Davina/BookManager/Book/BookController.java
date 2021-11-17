@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -34,26 +35,26 @@ public class BookController {
 		return bookService.findAllBooks();
 	}
 
-	@GetMapping("/{id}")
-	public Optional<Book> getBookById(@PathVariable("id") String id){
+	@GetMapping(params = {"id"})
+	public Optional<Book> getBookById(@RequestParam String id){
 		return bookService.findBookById(id);
 	}
 
-	@GetMapping("/{name}")
-	public List<Book> getBooksByName(@PathVariable("name") String name){
+	@GetMapping(params = {"name"})
+	public List<Book> getBooksByName(@RequestParam String name){
 		return bookService.findBooksByName(name);
 	}
 
-//	@PostMapping()
-//	public void addBooks(@RequestBody List<Book> books){
-//		bookService.addBooks(books);
-//	}
+	@PostMapping()
+	public void addBooks(@RequestBody List<Book> books){
+		bookService.addBooks(books);
+	}
 
 	//overloading the method depending on whether one or multiple books are passed did not work- will need to investigate how to add multiple books
-	@PostMapping()
-	public void addBook(@RequestBody Book book){
-		bookService.addBook(book);
-	}
+//	@PostMapping()
+//	public void addBook(@RequestBody Book book){
+//		bookService.addBook(book);
+//	}
 
 	@PutMapping()
 	public void updateBook(@RequestBody Book book){
