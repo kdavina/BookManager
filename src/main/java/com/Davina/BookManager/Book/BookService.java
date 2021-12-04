@@ -15,11 +15,11 @@ public class BookService {
 		this.bookRepository = bookRepository;
 	}
 
-	public List<Book> findAllBooks() {
+	public Iterable<Book> findAllBooks() {
 		return bookRepository.findAll();
-	}
+	} // don't understand why this needs to be iterable instead of list
 
-	public Optional<Book> findBookById(String id) {
+	public Optional<Book> findBookById(Integer id) {
 		return bookRepository.findById(id);
 	}
 
@@ -39,7 +39,7 @@ public class BookService {
 		bookRepository.save(book);
 	}
 
-	public void deleteBook(String id) {
+	public void deleteBook(Integer id) {
 		bookRepository.deleteById(id);
 	}
 

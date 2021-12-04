@@ -31,12 +31,12 @@ public class BookController {
 	}
 
 	@GetMapping
-	public List<Book> getAllBooks(){
+	public Iterable<Book> getAllBooks(){
 		return bookService.findAllBooks();
 	}
 
 	@GetMapping(params = {"id"})
-	public Optional<Book> getBookById(@RequestParam String id){
+	public Optional<Book> getBookById(@RequestParam Integer id){
 		return bookService.findBookById(id);
 	}
 
@@ -62,7 +62,7 @@ public class BookController {
 	}
 
 	@DeleteMapping("{id}")
-	public void deleteBook(@PathVariable("id") String id){
+	public void deleteBook(@PathVariable("id") Integer id){
 		bookService.deleteBook(id);
 	}
 

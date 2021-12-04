@@ -1,16 +1,17 @@
-# taken from Amigoscode Spring Boot + MongoDB tutorial: https://www.youtube.com/watch?v=ssj0CGxv60k&list=PLwvrYc43l1Mz_c-vV1yVyvFNFZPAleSNE&index=15
-version: '3.8'
+version: '3.1'
 services:
-  mongodb:
-    image: mongo:5.0.3
-    container_name: mongodb
+  db:
+    image: mysql:8.0
+    container_name: mysql
     ports:
-      - 27017:27017
+      - 3307:3306
     volumes:
       - data:/data
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=rootuser
-      - MONGO_INITDB_ROOT_PASSWORD=rootpass
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: bookmanager
+
+
 
 volumes:
   data: {}
